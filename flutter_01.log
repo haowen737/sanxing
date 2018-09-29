@@ -1,0 +1,162 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run -d all
+
+## exception
+
+String: Exit code 1 from: /Users/haowen/webProjects/popitin/sanxing/android/gradlew -v:
+Downloading https://services.gradle.org/distributions/gradle-4.4-all.zip
+
+
+Exception in thread "main" javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1002)
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1385)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1413)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1397)
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:559)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:185)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1546)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1474)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+	at org.gradle.wrapper.Download.downloadInternal(Download.java:58)
+	at org.gradle.wrapper.Download.download(Download.java:44)
+	at org.gradle.wrapper.Install$1.call(Install.java:61)
+	at org.gradle.wrapper.Install$1.call(Install.java:48)
+	at org.gradle.wrapper.ExclusiveFileAccessManager.access(ExclusiveFileAccessManager.java:65)
+	at org.gradle.wrapper.Install.createDist(Install.java:48)
+	at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:128)
+	at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:61)
+Caused by: java.io.EOFException: SSL peer shut down incorrectly
+	at sun.security.ssl.InputRecord.read(InputRecord.java:505)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:983)
+	... 16 more
+
+```
+#0      runCheckedAsync (package:flutter_tools/src/base/process.dart:251:5)
+<asynchronous suspension>
+#1      _initializeGradle (package:flutter_tools/src/android/gradle.dart:181:9)
+<asynchronous suspension>
+#2      _ensureGradle (package:flutter_tools/src/android/gradle.dart:162:37)
+<asynchronous suspension>
+#3      _readGradleProject (package:flutter_tools/src/android/gradle.dart:95:31)
+<asynchronous suspension>
+#4      _gradleProject (package:flutter_tools/src/android/gradle.dart:87:34)
+<asynchronous suspension>
+#5      getGradleAppOut (package:flutter_tools/src/android/gradle.dart:81:29)
+<asynchronous suspension>
+#6      AndroidApk.fromAndroidProject (package:flutter_tools/src/application_package.dart:96:23)
+<asynchronous suspension>
+#7      getApplicationPackageForPlatform (package:flutter_tools/src/application_package.dart:283:30)
+<asynchronous suspension>
+#8      FlutterDevice.runHot (package:flutter_tools/src/resident_runner.dart:270:21)
+<asynchronous suspension>
+#9      HotRunner.run (package:flutter_tools/src/run_hot.dart:261:39)
+<asynchronous suspension>
+#10     RunCommand.runCommand (package:flutter_tools/src/commands/run.dart:391:37)
+<asynchronous suspension>
+#11     FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:372:18)
+#12     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#13     _rootRunUnary (dart:async/zone.dart:1132:38)
+#14     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#15     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#16     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#17     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#18     Future._complete (dart:async/future_impl.dart:476:7)
+#19     _SyncCompleter.complete (dart:async/future_impl.dart:51:12)
+#20     _AsyncAwaitCompleter.complete (dart:async/runtime/libasync_patch.dart:28:18)
+#21     _completeOnAsyncReturn (dart:async/runtime/libasync_patch.dart:295:13)
+#22     RunCommand.usageValues (package:flutter_tools/src/commands/run.dart)
+#23     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#24     _rootRunUnary (dart:async/zone.dart:1132:38)
+#25     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#26     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#27     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#28     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#29     Future._complete (dart:async/future_impl.dart:476:7)
+#30     _SyncCompleter.complete (dart:async/future_impl.dart:51:12)
+#31     _AsyncAwaitCompleter.complete (dart:async/runtime/libasync_patch.dart:28:18)
+#32     _completeOnAsyncReturn (dart:async/runtime/libasync_patch.dart:295:13)
+#33     AndroidDevice.isLocalEmulator (package:flutter_tools/src/android/android_device.dart)
+#34     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#35     _rootRunUnary (dart:async/zone.dart:1132:38)
+#36     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#37     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#38     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#39     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#40     Future._complete (dart:async/future_impl.dart:476:7)
+#41     _SyncCompleter.complete (dart:async/future_impl.dart:51:12)
+#42     _AsyncAwaitCompleter.complete (dart:async/runtime/libasync_patch.dart:28:18)
+#43     _completeOnAsyncReturn (dart:async/runtime/libasync_patch.dart:295:13)
+#44     AndroidDevice._getProperty (package:flutter_tools/src/android/android_device.dart)
+#45     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#46     _rootRunUnary (dart:async/zone.dart:1132:38)
+#47     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#48     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#49     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#50     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#51     Future._completeWithValue (dart:async/future_impl.dart:486:5)
+#52     Future.timeout.<anonymous closure> (dart:async/future_impl.dart:740:16)
+#53     _rootRunUnary (dart:async/zone.dart:1132:38)
+#54     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#55     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#56     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#57     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#58     Future._completeWithValue (dart:async/future_impl.dart:486:5)
+#59     Future.wait.<anonymous closure> (dart:async/future.dart:394:22)
+#60     _rootRunUnary (dart:async/zone.dart:1132:38)
+#61     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#62     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#63     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#64     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#65     Future._completeWithValue (dart:async/future_impl.dart:486:5)
+#66     Future._asyncComplete.<anonymous closure> (dart:async/future_impl.dart:516:7)
+#67     _rootRun (dart:async/zone.dart:1124:13)
+#68     _CustomZone.run (dart:async/zone.dart:1021:19)
+#69     _CustomZone.bindCallback.<anonymous closure> (dart:async/zone.dart:947:23)
+#70     _microtaskLoop (dart:async/schedule_microtask.dart:41:21)
+#71     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50:5)
+#72     _runPendingImmediateCallback (dart:isolate/runtime/libisolate_patch.dart:115:13)
+#73     _RawReceivePortImpl._handleMessage (dart:isolate/runtime/libisolate_patch.dart:172:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel beta, v0.8.2, on Mac OS X 10.13.2 17C88, locale en-CN)
+    • Flutter version 0.8.2 at /Users/haowen/webProjects/popitin/flutter
+    • Framework revision 5ab9e70727 (3 weeks ago), 2018-09-07 12:33:05 -0700
+    • Engine revision 58a1894a1c
+    • Dart version 2.1.0-dev.3.1.flutter-760a9690c2
+
+[✓] Android toolchain - develop for Android devices (Android SDK 28.0.0)
+    • Android SDK at /Users/haowen/Library/Android/sdk
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-28, build-tools 28.0.0
+    • Java binary at: /Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/bin/java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1024-b01)
+    • All Android licenses accepted.
+
+[✓] iOS toolchain - develop for iOS devices (Xcode 9.4.1)
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Xcode 9.4.1, Build version 9F2000
+    • ios-deploy 1.9.2
+    • CocoaPods version 1.5.3
+
+[✓] Android Studio (version 3.1)
+    • Android Studio at /Applications/Android Studio.app/Contents
+    • Flutter plugin version 25.0.1
+    • Dart plugin version 173.4700
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1024-b01)
+
+[✓] VS Code (version 1.27.1)
+    • VS Code at /Applications/Visual Studio Code.app/Contents
+    • Flutter extension version 2.18.0
+
+[✓] Connected devices (2 available)
+    • Android SDK built for x86 • emulator-5554                        • android-x86 • Android 9 (API 28) (emulator)
+    • iPhone X                  • CF151552-97D7-4C54-B937-1C34E10BB0ED • ios         • iOS 11.4 (simulator)
+
+• No issues found!
+```

@@ -1,0 +1,131 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run -d all
+
+## exception
+
+ArgumentError: Invalid argument(s): Cannot find executable for /Users/haowen/Library/Android/sdk/build-tools/28.0.2/aapt.
+
+```
+#0      _getExecutable (package:process/src/interface/local_process_manager.dart:113:5)
+#1      LocalProcessManager.runSync (package:process/src/interface/local_process_manager.dart:84:7)
+#2      _runWithLoggingSync (package:flutter_tools/src/base/process.dart:324:48)
+#3      runCheckedSync (package:flutter_tools/src/base/process.dart:282:10)
+#4      new AndroidApk.fromApk (package:flutter_tools/src/application_package.dart:72:27)
+#5      AndroidApk.fromAndroidProject (package:flutter_tools/src/application_package.dart:100:20)
+<asynchronous suspension>
+#6      getApplicationPackageForPlatform (package:flutter_tools/src/application_package.dart:283:30)
+<asynchronous suspension>
+#7      FlutterDevice.runHot (package:flutter_tools/src/resident_runner.dart:270:21)
+<asynchronous suspension>
+#8      HotRunner.run (package:flutter_tools/src/run_hot.dart:261:39)
+<asynchronous suspension>
+#9      RunCommand.runCommand (package:flutter_tools/src/commands/run.dart:391:37)
+<asynchronous suspension>
+#10     FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:372:18)
+#11     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#12     _rootRunUnary (dart:async/zone.dart:1132:38)
+#13     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#14     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#15     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#16     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#17     Future._complete (dart:async/future_impl.dart:476:7)
+#18     _SyncCompleter.complete (dart:async/future_impl.dart:51:12)
+#19     _AsyncAwaitCompleter.complete (dart:async/runtime/libasync_patch.dart:28:18)
+#20     _completeOnAsyncReturn (dart:async/runtime/libasync_patch.dart:295:13)
+#21     RunCommand.usageValues (package:flutter_tools/src/commands/run.dart)
+#22     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#23     _rootRunUnary (dart:async/zone.dart:1132:38)
+#24     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#25     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#26     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#27     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#28     Future._complete (dart:async/future_impl.dart:476:7)
+#29     _SyncCompleter.complete (dart:async/future_impl.dart:51:12)
+#30     _AsyncAwaitCompleter.complete (dart:async/runtime/libasync_patch.dart:28:18)
+#31     _completeOnAsyncReturn (dart:async/runtime/libasync_patch.dart:295:13)
+#32     AndroidDevice.isLocalEmulator (package:flutter_tools/src/android/android_device.dart)
+#33     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#34     _rootRunUnary (dart:async/zone.dart:1132:38)
+#35     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#36     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#37     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#38     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#39     Future._complete (dart:async/future_impl.dart:476:7)
+#40     _SyncCompleter.complete (dart:async/future_impl.dart:51:12)
+#41     _AsyncAwaitCompleter.complete (dart:async/runtime/libasync_patch.dart:28:18)
+#42     _completeOnAsyncReturn (dart:async/runtime/libasync_patch.dart:295:13)
+#43     AndroidDevice._getProperty (package:flutter_tools/src/android/android_device.dart)
+#44     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#45     _rootRunUnary (dart:async/zone.dart:1132:38)
+#46     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#47     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#48     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#49     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#50     Future._completeWithValue (dart:async/future_impl.dart:486:5)
+#51     Future.timeout.<anonymous closure> (dart:async/future_impl.dart:740:16)
+#52     _rootRunUnary (dart:async/zone.dart:1132:38)
+#53     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#54     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#55     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#56     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#57     Future._completeWithValue (dart:async/future_impl.dart:486:5)
+#58     Future.wait.<anonymous closure> (dart:async/future.dart:394:22)
+#59     _rootRunUnary (dart:async/zone.dart:1132:38)
+#60     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#61     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#62     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#63     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#64     Future._completeWithValue (dart:async/future_impl.dart:486:5)
+#65     Future._asyncComplete.<anonymous closure> (dart:async/future_impl.dart:516:7)
+#66     _rootRun (dart:async/zone.dart:1124:13)
+#67     _CustomZone.run (dart:async/zone.dart:1021:19)
+#68     _CustomZone.bindCallback.<anonymous closure> (dart:async/zone.dart:947:23)
+#69     _microtaskLoop (dart:async/schedule_microtask.dart:41:21)
+#70     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50:5)
+#71     _runPendingImmediateCallback (dart:isolate/runtime/libisolate_patch.dart:115:13)
+#72     _RawReceivePortImpl._handleMessage (dart:isolate/runtime/libisolate_patch.dart:172:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel beta, v0.8.2, on Mac OS X 10.13.2 17C88, locale en-CN)
+    • Flutter version 0.8.2 at /Users/haowen/webProjects/popitin/flutter
+    • Framework revision 5ab9e70727 (4 weeks ago), 2018-09-07 12:33:05 -0700
+    • Engine revision 58a1894a1c
+    • Dart version 2.1.0-dev.3.1.flutter-760a9690c2
+
+[!] Android toolchain - develop for Android devices (Android SDK 28.0.2)
+    • Android SDK at /Users/haowen/Library/Android/sdk
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-28, build-tools 28.0.2
+    ✗ Android SDK file not found: /Users/haowen/Library/Android/sdk/build-tools/28.0.2/aapt.
+    • Try re-installing or updating your Android SDK,
+      visit https://flutter.io/setup/#android-setup for detailed instructions.
+
+[✓] iOS toolchain - develop for iOS devices (Xcode 9.4.1)
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Xcode 9.4.1, Build version 9F2000
+    • ios-deploy 1.9.2
+    • CocoaPods version 1.5.3
+
+[✓] Android Studio (version 3.2)
+    • Android Studio at /Applications/Android Studio.app/Contents
+    • Flutter plugin version 28.0.2
+    • Dart plugin version 181.5616
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1136-b06)
+
+[✓] VS Code (version 1.27.2)
+    • VS Code at /Applications/Visual Studio Code.app/Contents
+    • Flutter extension version 2.18.0
+
+[✓] Connected devices (3 available)
+    • Android SDK built for x86 • emulator-5554                        • android-x86 • Android 9 (API 28) (emulator)
+    • Android SDK built for x86 • emulator-5556                        • android-x86 • Android 9 (API 28) (emulator)
+    • iPhone X                  • CF151552-97D7-4C54-B937-1C34E10BB0ED • ios         • iOS 11.4 (simulator)
+
+! Doctor found issues in 1 category.
+```

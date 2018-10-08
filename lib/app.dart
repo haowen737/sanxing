@@ -4,12 +4,13 @@ import 'package:sanxing/ui/page/dashboard/dashboard.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
+        backgroundColor: Color.fromRGBO(45, 41, 77, 1.0),
       ),
-      home: new HomePage(),
+      home: Dashboard(),
     );
   }
 }
@@ -25,7 +26,7 @@ class HomePage extends StatefulWidget {
   final String title;
 
   @override
-  _HomePageState createState() => new _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {

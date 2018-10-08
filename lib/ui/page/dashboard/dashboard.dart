@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'abar.dart';
+import 'package:sanxing/ui/page/task_list/task_list.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _DashboardState extends State<Dashboard> {
     return Container(
       color: Colors.black,
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: ABar()
+      child: TaskList()
     );
   }
 }

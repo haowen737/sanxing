@@ -9,11 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9b15ee8-06aa-4adf-9c2b-931bcdcfee42" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/page/dashboard/dashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/page/dashboard/dashboard.dart" afterDir="false" />
-    </list>
+    <list default="true" id="a9b15ee8-06aa-4adf-9c2b-931bcdcfee42" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
@@ -80,7 +76,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-1" />
     <option name="y" value="-1045" />
     <option name="width" value="1400" />

@@ -11,6 +11,7 @@ class WeekNotice extends StatelessWidget {
 
     return SafeArea(child: Container(
       padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+      color: Colors.red,
       child: DefaultTextStyle(
         style: TextStyle(fontSize: 15, color: Color.fromRGBO(0, 0, 0, 1)),
         child: Row(children: <Widget>[

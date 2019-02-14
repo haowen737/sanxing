@@ -2,10 +2,22 @@ class WeekName {
   static const String Mon = 'Mon';
 }
 
-const weekSet = [
+const weekSetShort = [
   'Mon',
   'Tue',
   'Web',
   'Thu',
-  'd'
+  'Fri',
+  'Sat',
+  'Sun',
+];
+
+const weekSetFull = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
 ];

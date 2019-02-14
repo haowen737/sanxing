@@ -17,7 +17,6 @@ class App extends StatelessWidget {
     routes: <String, WidgetBuilder>{
       RouteCollect.home: (BuildContext context) => Home(),
       RouteCollect.timeline: (BuildContext context) => Timeline(),
-      RouteCollect.taskDetail: (BuildContext context) => TaskDetail(),
     },
   );
 

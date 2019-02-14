@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 import 'package:sanxing/ui/page/tasks/tasks_transformer.dart';
 import 'package:sanxing/ui/widgets/textHero.dart';
 import 'package:sanxing/utils/routedata.dart';
+import 'package:sanxing/ui/page/taskDetail/task_detail.dart';
 
 class TaskItem extends StatefulWidget {
   TaskItem({
@@ -55,7 +56,15 @@ class _TaskItemState extends State<TaskItem> {
 
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, RouteCollect.taskDetail);
+        Navigator.push(context, PageRouteBuilder(
+          transitionDuration: Duration(microseconds: 500),
+          pageBuilder: (BuildContext context, Animation animation, Animation secondaryAnimation) {
+            return FadeTransition(
+              opacity: animation,
+              child: TaskDetail()
+            );
+          }));
+        // Navigator.pushNamed(context, RouteCollect.taskDetail);
       },
       child: titleText
     );

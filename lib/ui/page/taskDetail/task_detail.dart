@@ -8,8 +8,12 @@ class TaskDetail extends StatefulWidget {
 class _TaskDetailState extends State<TaskDetail> {
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: Text('nice new page')
-    );
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: CupertinoPageScaffold(
+        child: Text('nice new page')
+      ));
   }
 }

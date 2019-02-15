@@ -34,6 +34,7 @@
     <session id="874358645">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -94,8 +95,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="221" />
-    <option name="y" value="-1046" />
+    <option name="x" value="1550" />
+    <option name="y" value="-1057" />
     <option name="width" value="1400" />
     <option name="height" value="987" />
   </component>
@@ -222,8 +223,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="221" y="-1046" width="1400" height="987" extended-state="0" />
-    <editor active="true" />
+    <frame x="1550" y="-1057" width="1400" height="987" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

@@ -29,12 +29,16 @@ class Timeline extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       backgroundColor: Colors.white,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          WeekNotice(),
-          _activityGrid(context),
-          Tasks()
-        ]));
+      child: SizedBox.expand(
+        child: Stack(
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                WeekNotice(),
+                _activityGrid(context),
+              ]),
+            Tasks()
+          ])));
   }
 }

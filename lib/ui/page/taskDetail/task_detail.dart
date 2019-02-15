@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sanxing/ui/widgets/taskTileHero.dart';
-import 'package:sanxing/ui/widgets/taskTile.dart';
+import 'package:sanxing/ui/page/tasks/taskTile.dart';
 import 'package:sanxing/ui/page/tasks/tasks_transformer.dart';
 
 class TaskDetail extends StatefulWidget {

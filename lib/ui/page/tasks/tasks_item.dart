@@ -102,20 +102,25 @@ class _TaskItemState extends State<TaskItem> {
     setState(() {
       _top += details.delta.dy;
     });
-    // print(callback);
     callback();
 
     if (offset > 0) {
       return ;
     }
 
-    setState(() {
-      _backDropHeight = deviceSize.height + offset;
-    });
+    // setState(() {
+    //   _backDropHeight = deviceSize.height + offset;
+    // });
   }
 
   void _handleVerticalDragEnd(DragEndDetails details) {
-      _clearStateTop();
+    final offset = details.velocity;
+    final primaryVelocity = details.primaryVelocity;
+    // print('----drag end');
+    // print(offset);
+    // print(primaryVelocity);
+
+      // _clearStateTop();
   }
 
   @override

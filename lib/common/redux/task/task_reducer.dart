@@ -8,9 +8,7 @@ final taskPageReducer = combineReducers<TaskPageState>([
 ]);
 
 TaskPageState updateTaskPageViewReducer(TaskPageState taskPage, UpdateTaskPageAction action) {
-  taskPage.view = taskPage.view == TaskPageViewEnum.collapse
-    ? TaskPageViewEnum.expend
-    : TaskPageViewEnum.collapse;
+  taskPage.view = action.view;
   return taskPage;
 }
 

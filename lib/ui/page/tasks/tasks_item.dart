@@ -22,15 +22,10 @@ class TaskItem extends StatefulWidget {
 }
 
 class _TaskItemState extends State<TaskItem> {
-  double _top = 0.0;
   double _backDropWidth = 0;
   double _backDropHeight = 0;
 
-  void _clearStateTop() {
-    setState(() {
-      _top = 0.0;
-    });
-  }
+  TaskPageViewEnum _dragAction;
 
   Widget _applyTextEffects({
     @required double translationFactor,
@@ -60,7 +55,7 @@ class _TaskItemState extends State<TaskItem> {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text(
-          '$_top widget.item',
+          '$_dragAction widget.item',
           style: textTheme.title.copyWith(
             color: Colors.white, fontWeight: FontWeight.bold, fontSize: 32),
           )));
@@ -93,51 +88,44 @@ class _TaskItemState extends State<TaskItem> {
       ));
   }
 
-  void _handleVerticalDragUpdate(DragUpdateDetails details, VoidCallback callback) {
-    // print(detail.globalPosition);
-    // TODO: this top is for test only
+  void _handleVerticalDragUpdate(DragUpdateDetails details) {
     final offset = details.delta.dy;
-    final deviceSize = MediaQuery.of(context).size;
 
     setState(() {
-      _top += details.delta.dy;
+      _dragAction = offset > 0
+        ? TaskPageViewEnum.collapse
+        : TaskPageViewEnum.expend;
     });
-    callback();
-
-    if (offset > 0) {
-      return ;
-    }
-
-    // setState(() {
-    //   _backDropHeight = deviceSize.height + offset;
-    // });
   }
 
-  void _handleVerticalDragEnd(DragEndDetails details) {
-    final offset = details.velocity;
-    final primaryVelocity = details.primaryVelocity;
-    // print('----drag end');
-    // print(offset);
-    // print(primaryVelocity);
-
-      // _clearStateTop();
+  void _handleVerticalDragEnd(DragEndDetails details, Store store) {
+    store.dispatch(UpdateTaskPageAction(
+      _dragAction
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
-    AnimationController _taskAnimationController;
 
-    return StoreConnector<AppState, VoidCallback>(
-      converter: (Store<AppState> store) {
-        return () {
-          store.dispatch(UpdateTaskPageAction(TaskPageViewEnum.expend));
-        };
+    return StoreConnector<AppState, Store>(
+      converter: (Store store) {
+        // return (TaskPageViewEnum action) {
+        //   store.dispatch(UpdateTaskPageAction(action));
+        // };
+        return store;
       },
-      builder: (BuildContext context, VoidCallback callback) {
+      builder: (BuildContext context, Store store) {
+        final boxSize = taskPageViewSizeMap(
+          MediaQuery.of(context).size,
+          store.state.taskPage.view
+        );
+        // print(boxSize);
+        // print(store.state.taskPage.view);
         return GestureDetector(
-          onVerticalDragUpdate: (DragUpdateDetails details) => _handleVerticalDragUpdate(details, callback),
-          onVerticalDragEnd: (DragEndDetails details) => _handleVerticalDragEnd(details),
-          child: SizedBox.expand(
+          onVerticalDragUpdate: (DragUpdateDetails details) => _handleVerticalDragUpdate(details),
+          onVerticalDragEnd: (DragEndDetails details) => _handleVerticalDragEnd(details, store),
+          child: SizedBox.fromSize(
+            size: boxSize,
             child: Container(
               padding: EdgeInsets.symmetric(
                 vertical: 16.0,

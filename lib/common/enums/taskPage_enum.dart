@@ -14,8 +14,6 @@ enum TaskPageViewEnum {
 // );
 
 Size taskPageViewSizeMap (deviceSize, TaskPageViewEnum view) {
-  print('check size');
-  print(view);
   switch (view) {
     case TaskPageViewEnum.collapse:
       return Size(deviceSize.width, deviceSize.height / 2);

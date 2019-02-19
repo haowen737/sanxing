@@ -27,6 +27,8 @@ class Timeline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
+
     return CupertinoPageScaffold(
       backgroundColor: Colors.white,
       child: SizedBox.expand(
@@ -38,7 +40,7 @@ class Timeline extends StatelessWidget {
                 WeekNotice(),
                 _activityGrid(context),
               ]),
-            Tasks()
+            Tasks(deviceSize)
           ])));
   }
 }

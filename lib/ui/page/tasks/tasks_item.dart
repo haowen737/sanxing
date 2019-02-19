@@ -12,19 +12,18 @@ class TaskItem extends StatefulWidget {
     @required this.index,
     @required this.item,
     @required this.pageVisibility,
+    @required this.padding,
   });
 
   final index;
   final item;
+  final padding;
   final PageVisibility pageVisibility;
 
   _TaskItemState createState() => _TaskItemState();
 }
 
 class _TaskItemState extends State<TaskItem> {
-  double _backDropWidth = 0;
-  double _backDropHeight = 0;
-
   TaskPageViewEnum _dragAction;
 
   Widget _applyTextEffects({
@@ -90,11 +89,14 @@ class _TaskItemState extends State<TaskItem> {
 
   void _handleVerticalDragUpdate(DragUpdateDetails details) {
     final offset = details.delta.dy;
+    final directionDown = offset > 0;
+
+    final action = directionDown
+      ? TaskPageViewEnum.collapse
+      : TaskPageViewEnum.expend;
 
     setState(() {
-      _dragAction = offset > 0
-        ? TaskPageViewEnum.collapse
-        : TaskPageViewEnum.expend;
+      _dragAction = action;
     });
   }
 
@@ -109,9 +111,6 @@ class _TaskItemState extends State<TaskItem> {
 
     return StoreConnector<AppState, Store>(
       converter: (Store store) {
-        // return (TaskPageViewEnum action) {
-        //   store.dispatch(UpdateTaskPageAction(action));
-        // };
         return store;
       },
       builder: (BuildContext context, Store store) {
@@ -127,10 +126,7 @@ class _TaskItemState extends State<TaskItem> {
           child: SizedBox.fromSize(
             size: boxSize,
             child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 16.0,
-                horizontal: 8.0,
-              ),
+              padding: widget.padding,
               // elevation: 3.0,
               // borderRadius: BorderRadius.circular(20.0),
               child: Stack(

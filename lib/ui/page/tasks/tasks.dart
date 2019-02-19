@@ -10,7 +10,7 @@ import 'package:sanxing/common/redux/task/task_state.dart';
 import 'package:sanxing/common/enums/taskPage_enum.dart';
 
 class Tasks extends StatefulWidget {
-  Size deviceSize;
+  final Size deviceSize;
   
   Tasks(this.deviceSize);
 
@@ -18,45 +18,68 @@ class Tasks extends StatefulWidget {
 }
 
 class _TasksState extends State<Tasks> with TickerProviderStateMixin{
-// class Tasks extends StatelessWidget {
-
   Animation<double> animationWidth;
   Animation<double> animationHeight;
+  Animation<double> animationEdgeVertical;
+  Animation<double> animationEdgeHorizontal;
   AnimationController controller;
+  AnimationController edgeAnimationController;
   TaskPageViewEnum _lastTaskPageStatus = TaskPageViewEnum.collapse;
 
   @override
   void initState() {
     super.initState();
+    final deviceWidth = widget.deviceSize.width;
+    final deviceHeight = widget.deviceSize.height;
+
     controller = AnimationController(
-      duration: const Duration(milliseconds: 450), vsync: this
+      duration: const Duration(milliseconds: 650), vsync: this
     );
-    animationWidth = Tween(begin: 320.0, end: widget.deviceSize.width).animate(controller)
-      ..addListener(() {
-        setState(()=>{});
-      });
-    final animation = CurvedAnimation(parent: controller, curve: Cubic(0.12, 0.6, 0.18, 1.0));
+    edgeAnimationController = AnimationController(
+      duration: const Duration(milliseconds: 1000), vsync: this
+    );
+
+    final animation = CurvedAnimation(parent: controller, curve: Cubic(0.18, 0.6, 0.08, 1.0));
+    final edgeAnimation = CurvedAnimation(parent: edgeAnimationController, curve: Curves.fastOutSlowIn);
+
+    animationWidth = Tween(begin: deviceWidth, end: deviceWidth).animate(controller)
+      ..addListener(() { setState(() => {});});
+
     animationHeight = Tween(begin: 420.0, end: widget.deviceSize.height).animate(animation)
-      ..addListener(() {
-        setState(()=>{});
-      });
-    
+      ..addListener(() { setState(()=> {});});
+      
+    animationEdgeVertical = Tween(begin: 16.0, end: 10.0).animate(edgeAnimation)
+      ..addListener(() { setState(() => {}); });
+    animationEdgeHorizontal = Tween(begin: 8.0, end: 2.0).animate(edgeAnimation)
+      ..addListener(() { setState(() => {}); });
     // controller.forward();
   }
+  
   void dispose() {
     //路由销毁时需要释放动画资源
     controller.dispose();
     super.dispose();
   }
 
+  // Anination runner
   void _animationRun(TaskPageViewEnum taskPage) {
+    // taskPage status == last
+    // return to optimize
     if (taskPage == _lastTaskPageStatus) return;
+
+    // excute expand animation
     if (taskPage == TaskPageViewEnum.expend) {
       controller.forward();
+      edgeAnimationController.forward();
     }
+
+    // excute collapse animation
     if (taskPage == TaskPageViewEnum.collapse) {
       controller.reverse();
+      edgeAnimationController.reverse();
     }
+
+    // animation excuted, mark pageStatus
     if (taskPage != _lastTaskPageStatus) {
       _lastTaskPageStatus = taskPage;
     }
@@ -64,7 +87,8 @@ class _TasksState extends State<Tasks> with TickerProviderStateMixin{
     print(taskPage);
   }
 
-  Widget flexContainer(deviceSize, Widget child) {
+  // Resize if animaiton trigger
+  Widget flexContainer(Widget child) {
     return StoreConnector<AppState, TaskPageState>(
       converter: (Store<AppState> store) {
         return store.state.taskPage;
@@ -81,15 +105,12 @@ class _TasksState extends State<Tasks> with TickerProviderStateMixin{
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
-
     return Positioned(
       bottom: 0,
       left: 0,
       child: DefaultTextStyle(
         style: TextStyle(fontSize: 15, color: Color.fromRGBO(0, 0, 0, 1)),
         child: flexContainer(
-          deviceSize,
           PageTransformer(
             pageViewBuilder: (context, visibilityResolver) {
               return PageView.builder(
@@ -100,9 +121,11 @@ class _TasksState extends State<Tasks> with TickerProviderStateMixin{
                   final pageVisibility =
                       visibilityResolver.resolvePageVisibility(index);
 
-                  // print(index);
-                  // print(pageVisibility);
                   return TaskItem(
+                    padding: EdgeInsets.symmetric(
+                      vertical: animationEdgeVertical.value,
+                      horizontal: animationEdgeHorizontal.value,
+                    ),
                     index: index,
                     item: item,
                     pageVisibility: pageVisibility,
